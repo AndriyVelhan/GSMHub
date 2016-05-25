@@ -1,0 +1,42 @@
+23:19:19 **** Incremental Build of configuration Release for project GSM_RemoteControl ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -Os -fpack-struct -fshort-enums -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega328 -DF_CPU=7372800UL -MMD -MP -MF"main.d" -MT"main.d" -c -o "main.o" "../main.c"
+Finished building: ../main.c
+ 
+Building target: GSM_RemoteControl.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,GSM_RemoteControl.map -mmcu=atmega328 -o "GSM_RemoteControl.elf"  ./Sys_timer.o ./keyboard.o ./lcd_display.o ./main.o ./ow_termo.o ./sim900.o   
+Finished building target: GSM_RemoteControl.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S GSM_RemoteControl.elf  >"GSM_RemoteControl.lss"
+Finished building: GSM_RemoteControl.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -O ihex GSM_RemoteControl.elf  "GSM_RemoteControl.hex"
+Finished building: GSM_RemoteControl.hex
+ 
+Create eeprom image (ihex format)
+avr-objcopy -j .eeprom --no-change-warnings --change-section-lma .eeprom=0 -O ihex GSM_RemoteControl.elf  "GSM_RemoteControl.eep"
+Finished building: GSM_RemoteControl.eep
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega328 GSM_RemoteControl.elf
+AVR Memory Usage
+----------------
+Device: atmega328
+
+Program:    7692 bytes (23.5% Full)
+(.text + .data + .bootloader)
+
+Data:       1058 bytes (51.7% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
+
+23:19:21 Build Finished (took 2s.108ms)
+
